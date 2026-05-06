@@ -17,6 +17,31 @@ namespace App\Models{
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property string $name
+ * @property string $description
+ * @property string $html
+ * @property int $version
+ * @property int $is_deleted
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereHtml($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereIsDeleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereVersion($value)
+ */
+	class Ability extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property string $name
  * @method static \Database\Factories\KeywordFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword newQuery()
@@ -27,31 +52,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword whereUpdatedAt($value)
  */
 	class Keyword extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * @property int $id
- * @property \Carbon\CarbonImmutable|null $created_at
- * @property \Carbon\CarbonImmutable|null $updated_at
- * @property string $name
- * @property string $description
- * @property string $html
- * @property int $version
- * @property int $is_deleted
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereHtml($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereIsDeleted($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Rule whereVersion($value)
- */
-	class Rule extends \Eloquent {}
 }
 
 namespace App\Models{
