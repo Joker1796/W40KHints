@@ -3,19 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keyword;
+use App\Services\KeywordService;
 use Illuminate\Http\Request;
 
 class KeywordController extends Controller
 {
     public function create(Request $request)
     {
-        $keyword = new Keyword;
-
-        $keyword->name = $request->name;
-
-        $keyword->save();
-
-        return response($keyword, 200);
+        return KeywordService::create($request);
     }
 
     public function show(Keyword $keyword)
@@ -25,11 +20,7 @@ class KeywordController extends Controller
 
     public function update(Request $request, Keyword $keyword)
     {
-        $keyword->name = $request->name;
-
-        $keyword->save();
-
-        return response($keyword, 200);
+        return KeywordService::update($request, $keyword);
     }
 
     public function destroy(Keyword $keyword)
