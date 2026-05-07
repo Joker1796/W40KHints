@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\KeywordController;
 use App\Http\Controllers\AbilityController;
+use App\Http\Controllers\KeywordController;
+use App\Http\Controllers\WargearController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,10 @@ Route::get('/ability/create', [AbilityController::class, 'create']);
 Route::get('/ability/{ability}', [AbilityController::class, 'show']);
 Route::put('/ability/{ability}', [AbilityController::class, 'update']);
 Route::delete('/ability/{ability}', [AbilityController::class, 'destroy']);
+
+Route::get('/wargear/create', [WargearController::class, 'create']);
+Route::get('/wargear/{wargear}', [WargearController::class, 'show']);
+Route::put('/wargear/{wargear}', [WargearController::class, 'update']);
+Route::delete('/wargear/{wargear}', [WargearController::class, 'destroy']);
+Route::put('/wargear/{wargear}/ability/{ability}', [WargearController::class, 'attachAbility']);
+Route::delete('/wargear/{wargear}/ability/{ability}', [WargearController::class, 'detachAbility']);

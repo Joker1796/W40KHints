@@ -88,3 +88,28 @@ namespace App\Models{
 	class User extends \Eloquent {}
 }
 
+namespace App\Models{
+/**
+ * @property int $id
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property string $name
+ * @property string $description
+ * @property int $version
+ * @property int $is_deleted
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Ability> $abilities
+ * @property-read int|null $abilities_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereIsDeleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereVersion($value)
+ */
+	class Wargear extends \Eloquent {}
+}
+

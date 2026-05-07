@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Ability extends Model
+class Wargear extends Model
 {
     public function abilities(): BelongsToMany
     {
-        return $this->belongsToMany(Wargear::class);
+        return $this->belongsToMany(Ability::class);
     }
 }
