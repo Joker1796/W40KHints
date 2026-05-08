@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AbilityController;
+use App\Http\Controllers\GameRuleController;
 use App\Http\Controllers\KeywordController;
 use App\Http\Controllers\WargearController;
 use Illuminate\Http\Request;
@@ -19,6 +20,11 @@ Route::get('/ability/create', [AbilityController::class, 'create']);
 Route::get('/ability/{ability}', [AbilityController::class, 'show']);
 Route::put('/ability/{ability}', [AbilityController::class, 'update']);
 Route::delete('/ability/{ability}', [AbilityController::class, 'destroy']);
+
+Route::get('/game-rule/create', [GameRuleController::class, 'create']);
+Route::get('/game-rule/{gameRule}', [GameRuleController::class, 'show']);
+Route::put('/game-rule/{gameRule}', [GameRuleController::class, 'update']);
+Route::delete('/game-rule/{gameRule}', [GameRuleController::class, 'destroy']);
 
 Route::get('/wargear/create', [WargearController::class, 'create']);
 Route::get('/wargear/{wargear}', [WargearController::class, 'show']);

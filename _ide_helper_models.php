@@ -21,6 +21,8 @@ namespace App\Models{
  * @property string $html
  * @property int $version
  * @property int $is_deleted
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Wargear> $abilities
+ * @property-read int|null $abilities_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability query()
@@ -34,6 +36,33 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereVersion($value)
  */
 	class Ability extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property string $name
+ * @property string|null $description
+ * @property string|null $comment
+ * @property string $text
+ * @property int $version
+ * @property int $is_deleted
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereIsDeleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereVersion($value)
+ */
+	class GameRule extends \Eloquent {}
 }
 
 namespace App\Models{
