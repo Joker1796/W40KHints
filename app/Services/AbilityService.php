@@ -17,7 +17,7 @@ final class AbilityService
         $ability = new Ability;
         $ability->name = $request->name;
         $ability->description = $request->description;
-        $ability->html = $request->html;
+        $ability->comment = $request->comment ?? null;
         $ability->version = 1;
 
         $ability->save();
@@ -36,7 +36,7 @@ final class AbilityService
 
         $ability->name = $request->name;
         $ability->description = $request->description;
-        $ability->html = $request->html;
+        $ability->comment = $request->comment ?? null;
 
         $ability->save();
 

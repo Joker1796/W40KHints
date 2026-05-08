@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->char('name', 50);
             $table->text('description');
-            $table->text('html');
+            $table->text('comment')->nullable();
             $table->integer('version');
             $table->boolean('is_deleted')->default(false);
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rules');
+        Schema::dropIfExists('abilities');
     }
 };

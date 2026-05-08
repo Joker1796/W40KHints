@@ -36,7 +36,7 @@ class AbilityTest extends TestCase
         $arguments = [
             'name' => 'test ability updated',
             'description' => 'test description updated',
-            'html' => 'test <b>html</b> updated',
+            'comment' => 'test comment with <b>html</b> updated',
             'isNewVersion' => true,
         ];
         $response = $this->call('PUT', '/api_V1/ability/'.$content->id, $arguments);
@@ -46,7 +46,7 @@ class AbilityTest extends TestCase
         $arguments = [
             'name' => 'test ability updated',
             'description' => 'test description updated',
-            'html' => 'test <b>html</b> updated',
+            'comment' => 'test comment with <b>html</b> updated',
         ];
         $response->assertJsonFragment($arguments);
     }
@@ -76,7 +76,7 @@ class AbilityTest extends TestCase
         $arguments = [
             'name' => 'test ability',
             'description' => 'test description',
-            'html' => 'test <b>html</b>',
+            'comment' => 'test comment with <b>html</b>',
             'version' => 1,
         ];
 

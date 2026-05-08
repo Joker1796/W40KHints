@@ -18,7 +18,7 @@ namespace App\Models{
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property string $name
  * @property string $description
- * @property string $html
+ * @property string|null $comment
  * @property int $version
  * @property int $is_deleted
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Wargear> $abilities
@@ -26,9 +26,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereHtml($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereIsDeleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereName($value)
