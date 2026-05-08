@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('wargears', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->char('name', 50)->unique();
+            $table->char('name', 50);
             $table->text('description');
             $table->integer('version');
             $table->boolean('is_deleted')->default(false);
@@ -34,7 +34,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wargears');
         Schema::dropIfExists('ability_wargear');
+        Schema::dropIfExists('wargears');
     }
 };

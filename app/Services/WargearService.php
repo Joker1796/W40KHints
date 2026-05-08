@@ -31,12 +31,11 @@ class WargearService
 
     public static function update(Request $request, Wargear $wargear): Response
     {
-        if (self::isWargearNameExists($request->name)) {
-            return response('This wargear name already exists.', 400);
-        }
-
         if (isset($request->isNewVersion) && $request->isNewVersion) {
+            $wargear = $wargear->replicate();
             $wargear->version = $wargear->version + 1;
+        } elseif (self::isWargearNameExists($request->name)) {
+            return response('This wargear name already exists.', 400);
         }
 
         $wargear->name = $request->name;

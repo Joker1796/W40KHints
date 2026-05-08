@@ -27,12 +27,11 @@ final class AbilityService
 
     public static function update(Request $request, Ability $ability): Response
     {
-        if (self::isAbilityNameExists($request->name)) {
-            return response('This ability name already exists.', 400);
-        }
-
         if (isset($request->isNewVersion) && $request->isNewVersion) {
+            $ability = $ability->replicate();
             $ability->version = $ability->version + 1;
+        } elseif (self::isAbilityNameExists($request->name)) {
+            return response('This ability name already exists.', 400);
         }
 
         $ability->name = $request->name;
