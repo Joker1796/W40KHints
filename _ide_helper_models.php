@@ -106,6 +106,7 @@ namespace App\Models{
  * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Keyword> $keywords
  * @property-read int|null $keywords_count
+ * @method static \Database\Factories\RangedWeaponFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon query()
