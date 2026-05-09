@@ -2,68 +2,58 @@
 
 namespace Feature\Models;
 
+use App\Models\Keyword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
 
 class KeywordTest extends TestCase
 {
     use RefreshDatabase;
 
+    const array BASE_ATTRIBUTES = ['name' => 'test keyword'];
+    const array UPDATED_ATTRIBUTES = ['name' => 'test keyword updated'];
+
     public function test_keyword_created_successfully(): void
     {
-        $response = $this->callCreateMethod();
+        $response = $this->call('GET', '/api_V1/keyword/create', self::BASE_ATTRIBUTES);
 
         $response->assertOk();
     }
 
     public function test_keyword_created_not_successfully_code_400(): void
     {
-        $response = $this->callCreateMethod();
+        Keyword::factory()->create(self::BASE_ATTRIBUTES);
 
-        $response->assertOk();
-
-        $response = $this->callCreateMethod();
+        $response = $this->call('GET', '/api_V1/keyword/create', self::BASE_ATTRIBUTES);
 
         $response->assertStatus(400);
     }
 
     public function test_keyword_updated_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $keyword = Keyword::factory()->create();
 
-        $arguments = ['name' => 'test keyword updated'];
-        $response = $this->call('PUT', '/api_V1/keyword/'.$content->id, $arguments);
+        $response = $this->call('PUT', '/api_V1/keyword/'.$keyword->id, self::UPDATED_ATTRIBUTES);
 
         $response->assertOk();
-        $response->assertJsonFragment($arguments);
+        $response->assertJsonFragment(self::UPDATED_ATTRIBUTES);
     }
 
     public function test_keyword_showed_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $keyword = Keyword::factory()->create();
 
-        $response = $this->call('GET', '/api_V1/keyword/'.$content->id);
+        $response = $this->call('GET', '/api_V1/keyword/'.$keyword->id);
 
         $response->assertOk();
     }
 
     public function test_keyword_destroyed_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $keyword = Keyword::factory()->create();
 
-        $response = $this->call('DELETE', '/api_V1/keyword/'.$content->id);
+        $response = $this->call('DELETE', '/api_V1/keyword/'.$keyword->id);
 
         $response->assertOk();
-    }
-
-    private function callCreateMethod(): TestResponse
-    {
-        $arguments = ['name' => 'test keyword'];
-
-        return $this->call('GET', '/api_V1/keyword/create', $arguments);
     }
 }
