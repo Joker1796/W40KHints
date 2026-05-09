@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('comment')->nullable();
             $table->text('text');
-            $table->integer('version');
+            $table->integer('version')->default(1);
             $table->boolean('is_deleted')->default(false);
         });
     }

@@ -23,6 +23,7 @@ namespace App\Models{
  * @property int $is_deleted
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Wargear> $abilities
  * @property-read int|null $abilities_count
+ * @method static \Database\Factories\AbilityFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability query()
@@ -167,6 +168,7 @@ namespace App\Models{
  * @property int $is_deleted
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Ability> $abilities
  * @property-read int|null $abilities_count
+ * @method static \Database\Factories\WargearFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear query()
