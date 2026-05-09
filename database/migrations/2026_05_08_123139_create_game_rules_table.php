@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('comment')->nullable();
             $table->text('text');
             $table->integer('version')->default(1);
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
         });
     }
 

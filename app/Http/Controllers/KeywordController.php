@@ -25,8 +25,6 @@ class KeywordController extends Controller
 
     public function destroy(Keyword $keyword)
     {
-        $keyword->delete();
-
-        return response('Ok', 200);
+        return KeywordService::destroy($keyword);
     }
 }

@@ -34,6 +34,13 @@ final class KeywordService
         return response($keyword, 200);
     }
 
+    public static function destroy(Keyword $keyword): Response
+    {
+        $keyword->delete();
+
+        return response('Ok', 200);
+    }
+
     private static function isKeywordExists(string $name): bool
     {
         return Keyword::where('name', $name)

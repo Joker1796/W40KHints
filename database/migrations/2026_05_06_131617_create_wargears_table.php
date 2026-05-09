@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('name', 50);
             $table->text('description');
             $table->integer('version')->default(1);
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
         });
 
         Schema::create('ability_wargear', function (Blueprint $table) {

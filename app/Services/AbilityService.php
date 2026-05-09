@@ -45,9 +45,7 @@ final class AbilityService
 
     public static function destroy(Ability $ability): Response
     {
-        $ability->is_deleted = true;
-
-        $ability->save();
+        $ability->delete();
 
         return response('Ok', 200);
     }

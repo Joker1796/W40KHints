@@ -7,7 +7,7 @@ use App\Models\Wargear;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class WargearService
+final class WargearService
 {
     public static function create(Request $request): Response
     {
@@ -52,9 +52,7 @@ class WargearService
 
     public static function destroy(Wargear $wargear): Response
     {
-        $wargear->is_deleted = true;
-
-        $wargear->save();
+        $wargear->delete();
 
         return response('Ok', 200);
     }

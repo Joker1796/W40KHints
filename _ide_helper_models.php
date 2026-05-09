@@ -20,7 +20,7 @@ namespace App\Models{
  * @property string $description
  * @property string|null $comment
  * @property int $version
- * @property int $is_deleted
+ * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Wargear> $abilities
  * @property-read int|null $abilities_count
  * @method static \Database\Factories\AbilityFactory factory($count = null, $state = [])
@@ -29,9 +29,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereIsDeleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Ability whereVersion($value)
@@ -49,15 +49,15 @@ namespace App\Models{
  * @property string|null $comment
  * @property string $text
  * @property int $version
- * @property int $is_deleted
+ * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereIsDeleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule whereUpdatedAt($value)
@@ -72,6 +72,7 @@ namespace App\Models{
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property string $name
+ * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\RangedWeapon> $rangedWeapons
  * @property-read int|null $ranged_weapons_count
  * @method static \Database\Factories\KeywordFactory factory($count = null, $state = [])
@@ -79,6 +80,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword whereUpdatedAt($value)
@@ -100,7 +102,7 @@ namespace App\Models{
  * @property string $AP
  * @property string $D
  * @property int $version
- * @property int $is_deleted
+ * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Keyword> $keywords
  * @property-read int|null $keywords_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon newModelQuery()
@@ -111,9 +113,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereBS($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereD($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereIsDeleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereRange($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereS($value)
@@ -165,7 +167,7 @@ namespace App\Models{
  * @property string $name
  * @property string $description
  * @property int $version
- * @property int $is_deleted
+ * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Ability> $abilities
  * @property-read int|null $abilities_count
  * @method static \Database\Factories\WargearFactory factory($count = null, $state = [])
@@ -173,9 +175,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereIsDeleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear whereVersion($value)

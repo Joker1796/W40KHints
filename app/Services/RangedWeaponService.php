@@ -7,7 +7,7 @@ use App\Models\RangedWeapon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class RangedWeaponService
+final class RangedWeaponService
 {
     public static function create(Request $request): Response
     {
@@ -65,9 +65,7 @@ class RangedWeaponService
 
     public static function destroy(RangedWeapon $rangedWeapon): Response
     {
-        $rangedWeapon->is_deleted = true;
-
-        $rangedWeapon->save();
+        $rangedWeapon->delete();
 
         return response('Ok', 200);
     }

@@ -6,7 +6,7 @@ use App\Models\GameRule;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class GameRuleService
+final class GameRuleService
 {
     public static function create(Request $request): Response
     {
@@ -52,9 +52,7 @@ class GameRuleService
 
     public static function destroy(GameRule $gameRule): Response
     {
-        $gameRule->is_deleted = true;
-
-        $gameRule->save();
+        $gameRule->delete();
 
         return response('Ok', 200);
     }

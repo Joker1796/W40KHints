@@ -23,7 +23,7 @@ return new class extends Migration
             $table->char('AP', 10);
             $table->char('D', 10);
             $table->integer('version')->default(1);
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
         });
 
         Schema::create('keyword_ranged_weapon', function (Blueprint $table) {
