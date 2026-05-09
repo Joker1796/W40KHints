@@ -11,7 +11,7 @@ class KeywordTest extends TestCase
     use RefreshDatabase;
 
     const array BASE_ATTRIBUTES = ['name' => 'test keyword'];
-    const array UPDATED_ATTRIBUTES = ['name' => 'test keyword updated'];
+    const array UPDATED_BASIC_ATTRIBUTES = ['name' => 'test keyword updated'];
 
     public function test_keyword_created_successfully(): void
     {
@@ -33,10 +33,10 @@ class KeywordTest extends TestCase
     {
         $keyword = Keyword::factory()->create();
 
-        $response = $this->call('PUT', '/api_V1/keyword/'.$keyword->id, self::UPDATED_ATTRIBUTES);
+        $response = $this->call('PUT', '/api_V1/keyword/'.$keyword->id, self::UPDATED_BASIC_ATTRIBUTES);
 
         $response->assertOk();
-        $response->assertJsonFragment(self::UPDATED_ATTRIBUTES);
+        $response->assertJsonFragment(self::UPDATED_BASIC_ATTRIBUTES);
     }
 
     public function test_keyword_showed_successfully(): void

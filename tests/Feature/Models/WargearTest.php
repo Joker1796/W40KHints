@@ -16,6 +16,10 @@ class WargearTest extends TestCase
         'name' => 'test wargear',
         'description' => 'test description',
     ];
+    const array UPDATED_BASIC_ATTRIBUTES = [
+        'name' => 'test wargear updated',
+        'description' => 'test description updated',
+    ];
 
     public function test_wargear_created_successfully(): void
     {
@@ -51,15 +55,10 @@ class WargearTest extends TestCase
     {
         $wargear = Wargear::factory()->create();
 
-        $arguments = [
-            'name' => 'test wargear updated',
-            'description' => 'test description updated',
-        ];
-
-        $response = $this->call('PUT', '/api_V1/wargear/'.$wargear->id, $arguments);
+        $response = $this->call('PUT', '/api_V1/wargear/'.$wargear->id, self::UPDATED_BASIC_ATTRIBUTES);
 
         $response->assertOk();
-        $response->assertJsonFragment($arguments);
+        $response->assertJsonFragment(self::UPDATED_BASIC_ATTRIBUTES);
     }
 
     public function test_wargear_showed_successfully(): void

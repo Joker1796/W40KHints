@@ -2,87 +2,69 @@
 
 namespace Feature\Models;
 
+use App\Models\GameRule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
 
 class GameRuleTest extends TestCase
 {
     use RefreshDatabase;
 
+    const array BASE_ATTRIBUTES = [
+        'name' => 'test game rule',
+        'description' => 'test description',
+        'comment' => 'test comment',
+        'text' => 'test text with <b>html</b>',
+    ];
+    const array UPDATED_BASIC_ATTRIBUTES = [
+        'name' => 'test game rule updated',
+        'description' => 'test description updated',
+        'comment' => 'test comment updated',
+        'text' => 'test text with <b>html</b> updated',
+    ];
+
     public function test_game_rule_created_successfully(): void
     {
-        $response = $this->callCreateMethod();
+        $response = $this->call('GET', '/api_V1/game-rule/create', self::BASE_ATTRIBUTES);
 
         $response->assertOk();
     }
 
     public function test_game_rule_created_not_successfully_code_400(): void
     {
-        $response = $this->callCreateMethod();
+        GameRule::factory()->create(self::BASE_ATTRIBUTES);
 
-        $response->assertOk();
-
-        $response = $this->callCreateMethod();
+        $response = $this->call('GET', '/api_V1/game-rule/create', self::BASE_ATTRIBUTES);
 
         $response->assertStatus(400);
     }
 
     public function test_game_rule_updated_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $gameRule = GameRule::factory()->create();
 
-        $arguments = [
-            'name' => 'test game rule updated',
-            'description' => 'test description updated',
-            'comment' => 'test comment updated',
-            'text' => 'test text with <b>html</b> updated',
-            'isNewVersion' => true,
-        ];
-        $response = $this->call('PUT', '/api_V1/game-rule/'.$content->id, $arguments);
+        $response = $this->call('PUT', '/api_V1/game-rule/'.$gameRule->id, self::UPDATED_BASIC_ATTRIBUTES);
 
         $response->assertOk();
 
-        $arguments = [
-            'name' => 'test game rule updated',
-            'description' => 'test description updated',
-            'comment' => 'test comment updated',
-            'text' => 'test text with <b>html</b> updated',
-        ];
-        $response->assertJsonFragment($arguments);
+        $response->assertJsonFragment(self::UPDATED_BASIC_ATTRIBUTES);
     }
 
     public function test_game_rule_showed_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $gameRule = GameRule::factory()->create();
 
-        $response = $this->call('GET', '/api_V1/game-rule/'.$content->id);
+        $response = $this->call('GET', '/api_V1/game-rule/'.$gameRule->id);
 
         $response->assertOk();
     }
 
     public function test_game_rule_destroyed_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $gameRule = GameRule::factory()->create();
 
-        $response = $this->call('DELETE', '/api_V1/game-rule/'.$content->id);
+        $response = $this->call('DELETE', '/api_V1/game-rule/'.$gameRule->id);
 
         $response->assertOk();
-    }
-
-    private function callCreateMethod(): TestResponse
-    {
-        $arguments = [
-            'name' => 'test game rule',
-            'description' => 'test description',
-            'comment' => 'test comment',
-            'text' => 'test text with <b>html</b>',
-            'version' => 1,
-        ];
-
-        return $this->call('GET', '/api_V1/game-rule/create', $arguments);
     }
 }

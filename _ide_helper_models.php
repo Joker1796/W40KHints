@@ -50,6 +50,7 @@ namespace App\Models{
  * @property string $text
  * @property int $version
  * @property string|null $deleted_at
+ * @method static \Database\Factories\GameRuleFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|GameRule query()

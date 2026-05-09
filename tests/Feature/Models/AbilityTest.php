@@ -4,7 +4,6 @@ namespace Feature\Models;
 
 use App\Models\Ability;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
 
 class AbilityTest extends TestCase
@@ -15,9 +14,12 @@ class AbilityTest extends TestCase
         'name' => 'test ability',
         'description' => 'test description',
         'comment' => 'test comment with <b>html</b>',
-        'version' => 1,
     ];
-    const array UPDATED_ATTRIBUTES = ['name' => 'test keyword updated'];
+    const array UPDATED_BASIC_ATTRIBUTES = [
+        'name' => 'test ability updated',
+        'description' => 'test description updated',
+        'comment' => 'test comment with <b>html</b> updated',
+    ];
 
     public function test_ability_created_successfully(): void
     {
@@ -39,25 +41,11 @@ class AbilityTest extends TestCase
     {
         $ability = Ability::factory()->create();
 
-        $arguments = [
-            'name' => 'test ability updated',
-            'description' => 'test description updated',
-            'comment' => 'test comment with <b>html</b> updated',
-            'isNewVersion' => true,
-        ];
-
-        $response = $this->call('PUT', '/api_V1/ability/'.$ability->id, $arguments);
+        $response = $this->call('PUT', '/api_V1/ability/'.$ability->id, self::UPDATED_BASIC_ATTRIBUTES);
 
         $response->assertOk();
 
-        $arguments = [
-            'name' => 'test ability updated',
-            'description' => 'test description updated',
-            'comment' => 'test comment with <b>html</b> updated',
-            'version' => 2,
-        ];
-
-        $response->assertJsonFragment($arguments);
+        $response->assertJsonFragment(self::UPDATED_BASIC_ATTRIBUTES);
     }
 
     public function test_ability_showed_successfully(): void
