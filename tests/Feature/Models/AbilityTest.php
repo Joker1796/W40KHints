@@ -2,6 +2,7 @@
 
 namespace Feature\Models;
 
+use App\Models\Ability;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
@@ -10,28 +11,33 @@ class AbilityTest extends TestCase
 {
     use RefreshDatabase;
 
+    const array BASE_ATTRIBUTES = [
+        'name' => 'test ability',
+        'description' => 'test description',
+        'comment' => 'test comment with <b>html</b>',
+        'version' => 1,
+    ];
+    const array UPDATED_ATTRIBUTES = ['name' => 'test keyword updated'];
+
     public function test_ability_created_successfully(): void
     {
-        $response = $this->callCreateMethod();
+        $response = $this->call('GET', '/api_V1/ability/create', self::BASE_ATTRIBUTES);
 
         $response->assertOk();
     }
 
     public function test_ability_created_not_successfully_code_400(): void
     {
-        $response = $this->callCreateMethod();
+        Ability::factory()->create(self::BASE_ATTRIBUTES);
 
-        $response->assertOk();
-
-        $response = $this->callCreateMethod();
+        $response = $this->call('GET', '/api_V1/ability/create', self::BASE_ATTRIBUTES);
 
         $response->assertStatus(400);
     }
 
     public function test_ability_updated_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $ability = Ability::factory()->create();
 
         $arguments = [
             'name' => 'test ability updated',
@@ -39,7 +45,8 @@ class AbilityTest extends TestCase
             'comment' => 'test comment with <b>html</b> updated',
             'isNewVersion' => true,
         ];
-        $response = $this->call('PUT', '/api_V1/ability/'.$content->id, $arguments);
+
+        $response = $this->call('PUT', '/api_V1/ability/'.$ability->id, $arguments);
 
         $response->assertOk();
 
@@ -47,39 +54,27 @@ class AbilityTest extends TestCase
             'name' => 'test ability updated',
             'description' => 'test description updated',
             'comment' => 'test comment with <b>html</b> updated',
+            'version' => 2,
         ];
+
         $response->assertJsonFragment($arguments);
     }
 
     public function test_ability_showed_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $ability = Ability::factory()->create();
 
-        $response = $this->call('GET', '/api_V1/ability/'.$content->id);
+        $response = $this->call('GET', '/api_V1/ability/'.$ability->id);
 
         $response->assertOk();
     }
 
     public function test_ability_destroyed_successfully(): void
     {
-        $response = $this->callCreateMethod();
-        $content = json_decode($response->getContent());
+        $ability = Ability::factory()->create();
 
-        $response = $this->call('DELETE', '/api_V1/ability/'.$content->id);
+        $response = $this->call('DELETE', '/api_V1/ability/'.$ability->id);
 
         $response->assertOk();
-    }
-
-    private function callCreateMethod(): TestResponse
-    {
-        $arguments = [
-            'name' => 'test ability',
-            'description' => 'test description',
-            'comment' => 'test comment with <b>html</b>',
-            'version' => 1,
-        ];
-
-        return $this->call('GET', '/api_V1/ability/create', $arguments);
     }
 }
