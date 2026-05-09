@@ -70,13 +70,17 @@ class WargearTest extends TestCase
         $response->assertOk();
     }
 
-    public function test_wargear_destroyed_successfully(): void
+    public function test_wargear_soft_delete_successfully(): void
     {
         $wargear = Wargear::factory()->create();
 
         $response = $this->call('DELETE', '/api_V1/wargear/'.$wargear->id);
 
         $response->assertOk();
+
+        $content = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('deleted_at', $content);
+        $this->assertNotNull($content['deleted_at']);
     }
 
     public function test_wargear_attach_ability_successfully(): void

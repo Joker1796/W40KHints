@@ -23,8 +23,8 @@ class KeywordController extends Controller
         return KeywordService::update($request, $keyword);
     }
 
-    public function destroy(Keyword $keyword)
+    public function softDelete(Keyword $keyword)
     {
-        return KeywordService::destroy($keyword);
+        return KeywordService::softDelete($keyword);
     }
 }

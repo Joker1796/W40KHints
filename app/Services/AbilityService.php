@@ -43,11 +43,11 @@ final class AbilityService
         return response($ability, 200);
     }
 
-    public static function destroy(Ability $ability): Response
+    public static function softDelete(Ability $ability): Response
     {
         $ability->delete();
 
-        return response('Ok', 200);
+        return response($ability, 200);
     }
 
     private static function isAbilityNameExists(string $name): bool

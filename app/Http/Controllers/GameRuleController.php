@@ -23,8 +23,8 @@ class GameRuleController extends Controller
         return GameRuleService::update($request, $gameRule);
     }
 
-    public function destroy(GameRule $gameRule)
+    public function softDelete(GameRule $gameRule)
     {
-        return GameRuleService::destroy($gameRule);
+        return GameRuleService::softDelete($gameRule);
     }
 }

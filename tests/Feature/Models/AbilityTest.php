@@ -57,12 +57,16 @@ class AbilityTest extends TestCase
         $response->assertOk();
     }
 
-    public function test_ability_destroyed_successfully(): void
+    public function test_ability_soft_delete_successfully(): void
     {
         $ability = Ability::factory()->create();
 
         $response = $this->call('DELETE', '/api_V1/ability/'.$ability->id);
 
         $response->assertOk();
+
+        $content = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('deleted_at', $content);
+        $this->assertNotNull($content['deleted_at']);
     }
 }

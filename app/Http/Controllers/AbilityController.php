@@ -23,8 +23,8 @@ class AbilityController extends Controller
         return AbilityService::update($request, $ability);
     }
 
-    public function destroy(Ability $ability)
+    public function softDelete(Ability $ability)
     {
-        return AbilityService::destroy($ability);
+        return AbilityService::softDelete($ability);
     }
 }

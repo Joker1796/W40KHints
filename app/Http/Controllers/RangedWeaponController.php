@@ -24,9 +24,9 @@ class RangedWeaponController extends Controller
         return RangedWeaponService::update($request, $rangedWeapon);
     }
 
-    public function destroy(RangedWeapon $rangedWeapon)
+    public function softDelete(RangedWeapon $rangedWeapon)
     {
-        return RangedWeaponService::destroy($rangedWeapon);
+        return RangedWeaponService::softDelete($rangedWeapon);
     }
 
     public function attachKeyword(RangedWeapon $rangedWeapon, Keyword $keyword)

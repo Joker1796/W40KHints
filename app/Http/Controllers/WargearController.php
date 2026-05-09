@@ -24,9 +24,9 @@ class WargearController extends Controller
         return WargearService::update($request, $wargear);
     }
 
-    public function destroy(Wargear $wargear)
+    public function softDelete(Wargear $wargear)
     {
-        return WargearService::destroy($wargear);
+        return WargearService::softDelete($wargear);
     }
 
     public function attachAbility(Wargear $wargear, Ability $ability)

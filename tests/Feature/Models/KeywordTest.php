@@ -48,12 +48,16 @@ class KeywordTest extends TestCase
         $response->assertOk();
     }
 
-    public function test_keyword_destroyed_successfully(): void
+    public function test_keyword_soft_delete_successfully(): void
     {
         $keyword = Keyword::factory()->create();
 
         $response = $this->call('DELETE', '/api_V1/keyword/'.$keyword->id);
 
         $response->assertOk();
+
+        $content = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('deleted_at', $content);
+        $this->assertNotNull($content['deleted_at']);
     }
 }

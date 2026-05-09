@@ -84,13 +84,17 @@ class RangedWeaponTest extends TestCase
         $response->assertOk();
     }
 
-    public function test_ranged_weapon_destroyed_successfully(): void
+    public function test_ranged_weapon_soft_delete_successfully(): void
     {
         $rangedWeapon = RangedWeapon::factory()->create();
 
         $response = $this->call('DELETE', '/api_V1/ranged-weapon/'.$rangedWeapon->id);
 
         $response->assertOk();
+
+        $content = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('deleted_at', $content);
+        $this->assertNotNull($content['deleted_at']);
     }
 
     public function test_ranged_weapon_attach_keyword_successfully(): void

@@ -63,11 +63,11 @@ final class RangedWeaponService
         return response($rangedWeapon, 200);
     }
 
-    public static function destroy(RangedWeapon $rangedWeapon): Response
+    public static function softDelete(RangedWeapon $rangedWeapon): Response
     {
         $rangedWeapon->delete();
 
-        return response('Ok', 200);
+        return response($rangedWeapon, 200);
     }
 
     public static function attachKeyword(RangedWeapon $rangedWeapon, Keyword $keyword): Response

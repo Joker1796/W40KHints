@@ -50,11 +50,11 @@ final class GameRuleService
         return response($gameRule, 200);
     }
 
-    public static function destroy(GameRule $gameRule): Response
+    public static function softDelete(GameRule $gameRule): Response
     {
         $gameRule->delete();
 
-        return response('Ok', 200);
+        return response($gameRule, 200);
     }
 
     private static function isGameRuleNameExists(string $name): bool

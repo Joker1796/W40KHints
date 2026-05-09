@@ -59,12 +59,16 @@ class GameRuleTest extends TestCase
         $response->assertOk();
     }
 
-    public function test_game_rule_destroyed_successfully(): void
+    public function test_game_rule_soft_delete_successfully(): void
     {
         $gameRule = GameRule::factory()->create();
 
         $response = $this->call('DELETE', '/api_V1/game-rule/'.$gameRule->id);
 
         $response->assertOk();
+
+        $content = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('deleted_at', $content);
+        $this->assertNotNull($content['deleted_at']);
     }
 }

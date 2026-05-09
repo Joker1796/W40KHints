@@ -50,11 +50,11 @@ final class WargearService
         return response($wargear, 200);
     }
 
-    public static function destroy(Wargear $wargear): Response
+    public static function softDelete(Wargear $wargear): Response
     {
         $wargear->delete();
 
-        return response('Ok', 200);
+        return response($wargear, 200);
     }
 
     public static function attachAbility(Wargear $wargear, Ability $ability): Response
