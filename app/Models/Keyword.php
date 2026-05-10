@@ -13,8 +13,8 @@ class Keyword extends Model
     /** @use HasFactory<KeywordFactory> */
     use HasFactory, SoftDeletes;
 
-    public function rangedWeapons(): BelongsToMany
+    public function weaponProfiles(): BelongsToMany
     {
-        return $this->belongsToMany(RangedWeapon::class);
+        return $this->belongsToMany(WeaponProfile::class);
     }
 }

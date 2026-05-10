@@ -4,13 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class RangedWeapon extends Model
+class WeaponProfile extends Model
 {
-    /** @use HasFactory<RangedWeapon> */
+    /** @use HasFactory<WeaponProfile> */
     use HasFactory, SoftDeletes;
+
+    public function weapon(): BelongsTo
+    {
+        return $this->belongsTo(Weapon::class);
+    }
 
     public function keywords(): BelongsToMany
     {

@@ -80,8 +80,8 @@ namespace App\Models{
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property string $name
  * @property \Carbon\CarbonImmutable|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\RangedWeapon> $rangedWeapons
- * @property-read int|null $ranged_weapons_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\WeaponProfile> $weaponProfiles
+ * @property-read int|null $weapon_profiles_count
  * @method static \Database\Factories\KeywordFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword newQuery()
@@ -96,47 +96,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Keyword withoutTrashed()
  */
 	class Keyword extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * @property int $id
- * @property \Carbon\CarbonImmutable|null $created_at
- * @property \Carbon\CarbonImmutable|null $updated_at
- * @property string $name
- * @property string|null $description
- * @property string $range
- * @property string $A
- * @property string $BS
- * @property string $S
- * @property string $AP
- * @property string $D
- * @property int $version
- * @property \Carbon\CarbonImmutable|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Keyword> $keywords
- * @property-read int|null $keywords_count
- * @method static \Database\Factories\RangedWeaponFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereA($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereAP($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereBS($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereD($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereRange($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereS($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon whereVersion($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon withTrashed(bool $withTrashed = true)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RangedWeapon withoutTrashed()
- */
-	class RangedWeapon extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -200,5 +159,78 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Wargear withoutTrashed()
  */
 	class Wargear extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property string $name
+ * @property string|null $description
+ * @property int $type
+ * @property int $version
+ * @property \Carbon\CarbonImmutable|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\WeaponProfile> $weaponProfiles
+ * @property-read int|null $weapon_profiles_count
+ * @method static \Database\Factories\WeaponFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon whereVersion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon withTrashed(bool $withTrashed = true)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Weapon withoutTrashed()
+ */
+	class Weapon extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property string $name
+ * @property string $range
+ * @property string $attacks
+ * @property string $skills
+ * @property string $strength
+ * @property string $penetration
+ * @property string $damage
+ * @property int $version
+ * @property int $weapon_id
+ * @property \Carbon\CarbonImmutable|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Keyword> $keywords
+ * @property-read int|null $keywords_count
+ * @property-read \App\Models\Weapon|null $weapon
+ * @method static \Database\Factories\WeaponProfileFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereAttacks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereDamage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile wherePenetration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereRange($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereStrength($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereVersion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile whereWeaponId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile withTrashed(bool $withTrashed = true)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|WeaponProfile withoutTrashed()
+ */
+	class WeaponProfile extends \Eloquent {}
 }
 
