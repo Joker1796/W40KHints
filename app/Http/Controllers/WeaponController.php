@@ -29,11 +29,6 @@ class WeaponController extends Controller
         return WeaponService::softDelete($weapon);
     }
 
-    public function addWeaponProfile(Weapon $weapon, WeaponProfile $weaponProfile)
-    {
-        return WeaponService::addWeaponProfile($weapon, $weaponProfile);
-    }
-
     public function deleteWeaponProfile(Weapon $weapon, WeaponProfile $weaponProfile)
     {
         return WeaponService::deleteWeaponProfile($weapon, $weaponProfile);
